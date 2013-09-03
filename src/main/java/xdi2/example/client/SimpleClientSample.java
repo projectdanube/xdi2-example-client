@@ -8,6 +8,7 @@ import xdi2.client.http.XDIHttpClient;
 import xdi2.core.io.XDIWriter;
 import xdi2.core.io.XDIWriterRegistry;
 import xdi2.core.xri3.XDI3Segment;
+import xdi2.core.xri3.XDI3Statement;
 import xdi2.messaging.Message;
 import xdi2.messaging.MessageEnvelope;
 import xdi2.messaging.MessageResult;
@@ -18,11 +19,11 @@ public class SimpleClientSample {
 
     static XDIClient client = new XDIHttpClient("http://localhost:8080/xdi/mem-graph");
 
-    static void doAdd() throws Exception {
+    static void doSet() throws Exception {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
         Message message = messageEnvelope.getMessage(XDI3Segment.create("=sender"), true);
-        message.createAddOperation(XDI3Segment.create("(=markus+name/!/(data:,Markus))"));
+        message.createSetOperation(XDI3Statement.create("=markus<+name>&/&/\"Markus\""));
 
         client.send(messageEnvelope, null);
     }
@@ -51,10 +52,10 @@ public class SimpleClientSample {
 
         LogManager.getLogger("xdi2").setLevel(Level.OFF);
 
-        // run a $add message
+        // run a $set message
 
-        System.out.println("Running $add");
-        doAdd();
+        System.out.println("Running $set");
+        doSet();
 
         // run a $get message
 
