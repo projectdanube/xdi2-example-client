@@ -56,20 +56,24 @@ public class SimpleClientSample {
 
         System.out.println("Running $set");
         doSet();
+        System.out.println();
 
         // run a $get message
 
         System.out.println("Running $get");
         doGet();
+        System.out.println();
 
         // run a $del message
 
         System.out.println("Running $del");
         doDel();
+        System.out.println();
 
         // run a $get message
 
         System.out.println("Running $get");
         doGet();
-    }
+        System.out.println();
+   }
 }
