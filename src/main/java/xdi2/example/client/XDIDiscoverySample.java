@@ -10,9 +10,10 @@ public class XDIDiscoverySample {
 	public static void main(String[] args) throws Exception {
 
 		XDIDiscoveryClient discovery = new XDIDiscoveryClient();
-		discovery.setRegistryXdiClient(new XDIHttpClient("http://localhost:12220/"));    // this is the default
+		discovery.setRegistryXdiClient(new XDIHttpClient("http://mycloud.neustar.biz:12220/"));    // this is the default
 
 		XDIDiscoveryResult result = discovery.discoverFromRegistry(XDI3Segment.create("=markus"));
+		result = discovery.discoverFromAuthority(result.getXdiEndpointUri(), result.getCloudNumber());
 
 		System.out.println("Cloud Number: " + result.getCloudNumber());    // [=]!:uuid:91f28153-f600-ae24-91f2-8153f600ae24
 		System.out.println("URI: " + result.getXdiEndpointUri());          // http://mycloud.neustar.biz/%5B%3D%5D!%3Auuid%3A91f28153-f600-ae24-91f2-8153f600ae24/
