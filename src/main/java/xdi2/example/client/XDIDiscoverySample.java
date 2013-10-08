@@ -12,14 +12,14 @@ public class XDIDiscoverySample {
 		XDIDiscoveryClient discovery = new XDIDiscoveryClient();
 		discovery.setRegistryXdiClient(new XDIHttpClient("http://mycloud.neustar.biz:12220/"));
 
-		XDIDiscoveryResult resultFromRegistry = discovery.discoverFromRegistry(XDI3Segment.create("=markus"));
+		XDIDiscoveryResult resultFromRegistry = discovery.discoverFromRegistry(XDI3Segment.create("=markus"), null);
 
 		System.out.println("Cloud Number: " + resultFromRegistry.getCloudNumber());
 		System.out.println("URI: " + resultFromRegistry.getXdiEndpointUri());
 
 		if (resultFromRegistry.getXdiEndpointUri() != null && resultFromRegistry.getCloudNumber() != null) {
 
-			XDIDiscoveryResult resultFromAuthority = discovery.discoverFromAuthority(resultFromRegistry.getXdiEndpointUri(), resultFromRegistry.getCloudNumber());
+			XDIDiscoveryResult resultFromAuthority = discovery.discoverFromAuthority(resultFromRegistry.getXdiEndpointUri(), resultFromRegistry.getCloudNumber(), null);
 
 			System.out.println("Cloud Number: " + resultFromAuthority.getCloudNumber());
 			System.out.println("URI: " + resultFromAuthority.getXdiEndpointUri());
