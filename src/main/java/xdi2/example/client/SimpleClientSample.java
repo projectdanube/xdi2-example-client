@@ -22,7 +22,7 @@ public class SimpleClientSample {
     static void doSet() throws Exception {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
-        Message message = messageEnvelope.getMessage(XDI3Segment.create("=sender"), true);
+        Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
         message.createSetOperation(XDI3Statement.create("=markus<+name>&/&/\"Markus\""));
 
         client.send(messageEnvelope, null);
@@ -31,7 +31,7 @@ public class SimpleClientSample {
     static void doGet() throws Exception {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
-        Message message = messageEnvelope.getMessage(XDI3Segment.create("=sender"), true);
+        Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
         message.createGetOperation(XDI3Segment.create("()"));
 
         MessageResult messageResult = new MessageResult();
@@ -42,7 +42,7 @@ public class SimpleClientSample {
     static void doDel() throws Exception {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
-        Message message = messageEnvelope.getMessage(XDI3Segment.create("=sender"), true);
+        Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
         message.createDelOperation(XDI3Segment.create("()"));
 
         client.send(messageEnvelope, null);
