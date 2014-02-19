@@ -24,6 +24,7 @@ public class SimpleClientSample {
         MessageEnvelope messageEnvelope = new MessageEnvelope();
         Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
         message.createSetOperation(XDI3Statement.create("=markus<+name>&/&/\"Markus\""));
+        message.createSetOperation(XDI3Statement.create("=markus/+friend/=animesh"));
 
         client.send(messageEnvelope, null);
     }
@@ -32,7 +33,7 @@ public class SimpleClientSample {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
         Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
-        message.createGetOperation(XDI3Segment.create("()"));
+        message.createGetOperation(XDI3Segment.create(""));
 
         MessageResult messageResult = new MessageResult();
         client.send(messageEnvelope, messageResult);
@@ -43,7 +44,7 @@ public class SimpleClientSample {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
         Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
-        message.createDelOperation(XDI3Segment.create("()"));
+        message.createDelOperation(XDI3Segment.create("=markus"));
 
         client.send(messageEnvelope, null);
     }
