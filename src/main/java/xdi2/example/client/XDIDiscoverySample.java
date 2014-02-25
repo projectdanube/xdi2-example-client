@@ -1,6 +1,5 @@
 package xdi2.example.client;
 
-import xdi2.client.http.XDIHttpClient;
 import xdi2.core.xri3.XDI3Segment;
 import xdi2.discovery.XDIDiscoveryClient;
 import xdi2.discovery.XDIDiscoveryResult;
@@ -10,7 +9,7 @@ public class XDIDiscoverySample {
 	public static void main(String[] args) throws Exception {
 
 		XDIDiscoveryClient discovery = new XDIDiscoveryClient();
-		discovery.setRegistryXdiClient(new XDIHttpClient("http://mycloud.neustar.biz:12220/"));
+		discovery.setRegistryXdiClient(XDIDiscoveryClient.NEUSTAR_PROD_DISCOVERY_XDI_CLIENT);
 
 		XDIDiscoveryResult resultFromRegistry = discovery.discoverFromRegistry(XDI3Segment.create("=markus"), null);
 
