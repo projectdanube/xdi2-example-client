@@ -12,7 +12,7 @@ import xdi2.discovery.XDIDiscoveryResult;
 
 public class XDIUtilSample {
 
-	public static void sampleAuthenticateSecretToken() throws Xdi2ClientException, GeneralSecurityException {
+	public static void sampleAuthenticateSecretToken() throws Xdi2ClientException {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
 		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discover(XDI3Segment.create("=alice"), null);
@@ -21,7 +21,14 @@ public class XDIUtilSample {
 		String xdiEndpoint = xdiDiscoveryResult.getXdiEndpointUri();
 		String secretToken = "alice";
 
-		XDIClientUtil.authenticateSecretToken(cloudNumber, xdiEndpoint, secretToken);
+		try {
+
+			XDIClientUtil.authenticateSecretToken(cloudNumber, xdiEndpoint, secretToken);
+		} catch (Xdi2ClientException ex) {
+
+			System.err.println("Not authenticated.");
+			throw ex;
+		}
 
 		System.out.println("Successfully authenticated.");
 	}
