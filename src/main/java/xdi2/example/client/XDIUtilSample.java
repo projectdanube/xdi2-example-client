@@ -15,7 +15,7 @@ public class XDIUtilSample {
 	public static void sampleAuthenticateSecretToken() throws Xdi2ClientException {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
-		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discover(XDI3Segment.create("=alice"), null);
+		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDI3Segment.create("=alice"), null);
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
 		String xdiEndpoint = xdiDiscoveryResult.getXdiEndpointUri();
@@ -36,7 +36,7 @@ public class XDIUtilSample {
 	public static void sampleRetrievePrivateKeys() throws Xdi2ClientException, GeneralSecurityException {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
-		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discover(XDI3Segment.create("=alice"), null);
+		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDI3Segment.create("=alice"), null);
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
 		String xdiEndpoint = xdiDiscoveryResult.getXdiEndpointUri();
@@ -46,7 +46,7 @@ public class XDIUtilSample {
 		PrivateKey encryptionPrivateKey = XDIClientUtil.retrieveEncryptionPrivateKey(cloudNumber, xdiEndpoint, secretToken);
 
 		System.out.println("Successfully retrieved signature private key: " + signaturePrivateKey);
-		System.out.println("Successfully retrieved encryption private key." + encryptionPrivateKey);
+		System.out.println("Successfully retrieved encryption private key: " + encryptionPrivateKey);
 	}
 
 	public static void main(String[] args) throws Exception {
