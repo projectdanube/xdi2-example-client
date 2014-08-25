@@ -12,14 +12,14 @@ public class XDIDiscoverySample {
 		XDIDiscoveryResult resultFromRegistry = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"), null);
 
 		System.out.println("Cloud Number: " + resultFromRegistry.getCloudNumber());
-		System.out.println("URI: " + resultFromRegistry.getXdiEndpointUri());
+		System.out.println("URI: " + resultFromRegistry.getXdiEndpointUrl());
 
-		if (resultFromRegistry.getXdiEndpointUri() != null && resultFromRegistry.getCloudNumber() != null) {
+		if (resultFromRegistry.getXdiEndpointUrl() != null && resultFromRegistry.getCloudNumber() != null) {
 
-			XDIDiscoveryResult resultFromAuthority = xdiDiscoveryClient.discoverFromAuthority(resultFromRegistry.getXdiEndpointUri(), resultFromRegistry.getCloudNumber(), null);
+			XDIDiscoveryResult resultFromAuthority = xdiDiscoveryClient.discoverFromAuthority(resultFromRegistry.getXdiEndpointUrl(), resultFromRegistry.getCloudNumber(), null);
 
 			System.out.println("Cloud Number: " + resultFromAuthority.getCloudNumber());
-			System.out.println("URI: " + resultFromAuthority.getXdiEndpointUri());
+			System.out.println("URI: " + resultFromAuthority.getXdiEndpointUrl());
 		}
 	}
 }
