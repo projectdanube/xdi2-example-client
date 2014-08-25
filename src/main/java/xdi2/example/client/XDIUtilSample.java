@@ -5,8 +5,8 @@ import java.security.PrivateKey;
 
 import xdi2.client.exceptions.Xdi2ClientException;
 import xdi2.client.util.XDIClientUtil;
-import xdi2.core.xri3.CloudNumber;
-import xdi2.core.xri3.XDI3Segment;
+import xdi2.core.syntax.CloudNumber;
+import xdi2.core.syntax.XDIAddress;
 import xdi2.discovery.XDIDiscoveryClient;
 import xdi2.discovery.XDIDiscoveryResult;
 
@@ -15,7 +15,7 @@ public class XDIUtilSample {
 	public static void sampleAuthenticateSecretToken() throws Xdi2ClientException {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
-		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDI3Segment.create("=alice"), null);
+		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"), null);
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
 		String xdiEndpoint = xdiDiscoveryResult.getXdiEndpointUri();
@@ -36,7 +36,7 @@ public class XDIUtilSample {
 	public static void sampleRetrievePrivateKeys() throws Xdi2ClientException, GeneralSecurityException {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
-		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDI3Segment.create("=alice"), null);
+		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"), null);
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
 		String xdiEndpoint = xdiDiscoveryResult.getXdiEndpointUri();

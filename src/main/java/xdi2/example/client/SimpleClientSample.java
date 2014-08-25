@@ -7,8 +7,8 @@ import xdi2.client.XDIClient;
 import xdi2.client.http.XDIHttpClient;
 import xdi2.core.io.XDIWriter;
 import xdi2.core.io.XDIWriterRegistry;
-import xdi2.core.xri3.XDI3Segment;
-import xdi2.core.xri3.XDI3Statement;
+import xdi2.core.syntax.XDIAddress;
+import xdi2.core.syntax.XDIStatement;
 import xdi2.messaging.Message;
 import xdi2.messaging.MessageEnvelope;
 import xdi2.messaging.MessageResult;
@@ -22,9 +22,9 @@ public class SimpleClientSample {
     static void doSet() throws Exception {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
-        Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
-        message.createSetOperation(XDI3Statement.create("=markus<+name>&/&/\"Markus\""));
-        message.createSetOperation(XDI3Statement.create("=markus/+friend/=animesh"));
+        Message message = messageEnvelope.createMessage(XDIAddress.create("=sender"));
+        message.createSetOperation(XDIStatement.create("=markus<+name>&/&/\"Markus\""));
+        message.createSetOperation(XDIStatement.create("=markus/+friend/=animesh"));
 
         client.send(messageEnvelope, null);
     }
@@ -32,8 +32,8 @@ public class SimpleClientSample {
     static void doGet() throws Exception {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
-        Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
-        message.createGetOperation(XDI3Segment.create(""));
+        Message message = messageEnvelope.createMessage(XDIAddress.create("=sender"));
+        message.createGetOperation(XDIAddress.create(""));
 
         MessageResult messageResult = new MessageResult();
         client.send(messageEnvelope, messageResult);
@@ -43,8 +43,8 @@ public class SimpleClientSample {
     static void doDel() throws Exception {
 
         MessageEnvelope messageEnvelope = new MessageEnvelope();
-        Message message = messageEnvelope.createMessage(XDI3Segment.create("=sender"));
-        message.createDelOperation(XDI3Segment.create("=markus"));
+        Message message = messageEnvelope.createMessage(XDIAddress.create("=sender"));
+        message.createDelOperation(XDIAddress.create("=markus"));
 
         client.send(messageEnvelope, null);
     }
