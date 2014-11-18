@@ -11,7 +11,7 @@ import xdi2.core.syntax.XDIAddress;
 import xdi2.discovery.XDIDiscoveryClient;
 import xdi2.discovery.XDIDiscoveryResult;
 
-public class XDIUtilSample {
+public class AuthenticateSecretToken {
 
 	public static void sampleAuthenticateSecretToken() throws Xdi2ClientException {
 
