@@ -1,4 +1,4 @@
-xdi2-example-client
-===================
+<a href="http://projectdanube.org/" target="_blank"><img src="http://projectdanube.github.com/xdi2/images/projectdanube_logo.png" align="right"></a>
+<img src="http://projectdanube.github.com/xdi2/images/logo64.png"><br>
 
-XDI2 Examples: Writing XDI client applications
+Examples using the xdi2-client component
