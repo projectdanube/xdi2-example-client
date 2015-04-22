@@ -20,7 +20,7 @@ public class SimpleAgent {
 
 		XDIAgent xdi = new XDIBasicAgent();
 
-		ContextNode c = xdi.get(XDIAddress.create("=markus<#email>&"), null);
-		System.out.println(c.getLiteral().getLiteralDataString());
+		ContextNode c = xdi.get(XDIAddress.create("=markus<#email>"), null);
+		System.out.println(c.getLiteralNode().getLiteralDataString());
 	}
 }
