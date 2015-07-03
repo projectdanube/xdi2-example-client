@@ -3,8 +3,8 @@ package xdi2.example.client;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 
-import xdi2.client.agent.XDIAgent;
-import xdi2.client.agent.impl.XDIBasicAgent;
+import xdi2.agent.XDIAgent;
+import xdi2.agent.impl.XDIBasicAgent;
 import xdi2.core.ContextNode;
 import xdi2.core.syntax.XDIAddress;
 
@@ -21,6 +21,7 @@ public class SimpleAgent {
 		XDIAgent xdi = new XDIBasicAgent();
 
 		ContextNode c = xdi.get(XDIAddress.create("=markus<#email>"));
+		System.out.println(c);
 		System.out.println(c.getLiteralNode().getLiteralDataString());
 	}
 }
