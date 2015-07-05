@@ -17,16 +17,16 @@ public class SimpleDiscovery {
 
 		System.out.println("Result from registry:");
 		System.out.println("Cloud Number: " + resultFromRegistry.getCloudNumber());
-		System.out.println("URI: " + resultFromRegistry.getXdiEndpointUrl());
+		System.out.println("URI: " + resultFromRegistry.getXdiEndpointUri());
 		System.out.println();
 
-		if (resultFromRegistry.getXdiEndpointUrl() != null && resultFromRegistry.getCloudNumber() != null) {
+		if (resultFromRegistry.getXdiEndpointUri() != null && resultFromRegistry.getCloudNumber() != null) {
 
-			XDIDiscoveryResult resultFromAuthority = xdiDiscoveryClient.discoverFromAuthority(resultFromRegistry.getXdiEndpointUrl(), resultFromRegistry.getCloudNumber());
+			XDIDiscoveryResult resultFromAuthority = xdiDiscoveryClient.discoverFromAuthority(resultFromRegistry.getXdiEndpointUri(), resultFromRegistry.getCloudNumber());
 
 			System.out.println("Result from authority:");
 			System.out.println("Cloud Number: " + resultFromAuthority.getCloudNumber());
-			System.out.println("URI: " + resultFromAuthority.getXdiEndpointUrl());
+			System.out.println("URI: " + resultFromAuthority.getXdiEndpointUri());
 		}
 	}
 }

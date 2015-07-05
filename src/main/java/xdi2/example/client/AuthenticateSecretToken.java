@@ -1,6 +1,6 @@
 package xdi2.example.client;
 
-import java.net.URL;
+import java.net.URI;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 
@@ -19,12 +19,12 @@ public class AuthenticateSecretToken {
 		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"));
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
-		URL xdiEndpointUrl = xdiDiscoveryResult.getXdiEndpointUrl();
+		URI xdiEndpointUri = xdiDiscoveryResult.getXdiEndpointUri();
 		String secretToken = "alice";
 
 		try {
 
-			XDIClientUtil.authenticateSecretToken(cloudNumber, xdiEndpointUrl, secretToken);
+			XDIClientUtil.authenticateSecretToken(cloudNumber, xdiEndpointUri, secretToken);
 		} catch (Xdi2ClientException ex) {
 
 			System.err.println("Not authenticated.");
@@ -40,11 +40,11 @@ public class AuthenticateSecretToken {
 		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"));
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
-		URL xdiEndpointUrl = xdiDiscoveryResult.getXdiEndpointUrl();
+		URI xdiEndpointUri = xdiDiscoveryResult.getXdiEndpointUri();
 		String secretToken = "alice";
 
-		PrivateKey signaturePrivateKey = XDIClientUtil.retrieveSignaturePrivateKey(cloudNumber, xdiEndpointUrl, secretToken);
-		PrivateKey encryptionPrivateKey = XDIClientUtil.retrieveEncryptionPrivateKey(cloudNumber, xdiEndpointUrl, secretToken);
+		PrivateKey signaturePrivateKey = XDIClientUtil.retrieveSignaturePrivateKey(cloudNumber, xdiEndpointUri, secretToken);
+		PrivateKey encryptionPrivateKey = XDIClientUtil.retrieveEncryptionPrivateKey(cloudNumber, xdiEndpointUri, secretToken);
 
 		System.out.println("Successfully retrieved signature private key: " + signaturePrivateKey);
 		System.out.println("Successfully retrieved encryption private key: " + encryptionPrivateKey);

@@ -38,7 +38,7 @@ public class SimpleClient {
 
 		// construct client, send message, read result
 
-		XDIClient client = new XDIHttpClient(xdiDiscoveryResult.getXdiEndpointUrl());
+		XDIClient client = new XDIHttpClient(xdiDiscoveryResult.getXdiEndpointUri());
 
 		MessagingResponse messagingResponse = client.send(messageEnvelope);
 
