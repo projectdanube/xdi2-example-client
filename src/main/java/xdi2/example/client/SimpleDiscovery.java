@@ -13,7 +13,7 @@ public class SimpleDiscovery {
 	public static void main(String[] args) throws Exception {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
-		XDIDiscoveryResult resultFromRegistry = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=markus"), null);
+		XDIDiscoveryResult resultFromRegistry = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=markus"));
 
 		System.out.println("Result from registry:");
 		System.out.println("Cloud Number: " + resultFromRegistry.getCloudNumber());
@@ -22,7 +22,7 @@ public class SimpleDiscovery {
 
 		if (resultFromRegistry.getXdiEndpointUrl() != null && resultFromRegistry.getCloudNumber() != null) {
 
-			XDIDiscoveryResult resultFromAuthority = xdiDiscoveryClient.discoverFromAuthority(resultFromRegistry.getXdiEndpointUrl(), resultFromRegistry.getCloudNumber(), null);
+			XDIDiscoveryResult resultFromAuthority = xdiDiscoveryClient.discoverFromAuthority(resultFromRegistry.getXdiEndpointUrl(), resultFromRegistry.getCloudNumber());
 
 			System.out.println("Result from authority:");
 			System.out.println("Cloud Number: " + resultFromAuthority.getCloudNumber());

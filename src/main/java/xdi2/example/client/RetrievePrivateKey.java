@@ -16,7 +16,7 @@ public class RetrievePrivateKey {
 	public static void sampleAuthenticateSecretToken() throws Xdi2ClientException {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
-		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"), null);
+		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"));
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
 		URL xdiEndpointUrl = xdiDiscoveryResult.getXdiEndpointUrl();
@@ -37,7 +37,7 @@ public class RetrievePrivateKey {
 	public static void sampleRetrievePrivateKeys() throws Xdi2ClientException, GeneralSecurityException {
 
 		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
-		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"), null);
+		XDIDiscoveryResult xdiDiscoveryResult = xdiDiscoveryClient.discoverFromRegistry(XDIAddress.create("=alice"));
 
 		CloudNumber cloudNumber = xdiDiscoveryResult.getCloudNumber();
 		URL xdiEndpointUrl = xdiDiscoveryResult.getXdiEndpointUrl();
