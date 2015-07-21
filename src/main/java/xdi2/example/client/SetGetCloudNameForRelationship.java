@@ -22,6 +22,9 @@ import xdi2.messaging.response.MessagingResponse;
  * This shows how a cloud name can be "remembered" as part of a relationship
  * between two XDI authorities. This should not replace the need to properly
  * discover cloud names from cloud numbers, but can be used a supplementary tool.
+ * 
+ * This simple exampe assumes that there is only one cloud name per cloud number,
+ * and that there is notion of "preferred" cloud names.
  */
 public class SetGetCloudNameForRelationship {
 
