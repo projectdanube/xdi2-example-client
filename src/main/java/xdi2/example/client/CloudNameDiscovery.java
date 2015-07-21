@@ -9,6 +9,7 @@ import xdi2.core.Relation;
 import xdi2.core.constants.XDIConstants;
 import xdi2.core.constants.XDIDictionaryConstants;
 import xdi2.core.features.linkcontracts.instance.PublicLinkContract;
+import xdi2.core.syntax.CloudName;
 import xdi2.core.syntax.CloudNumber;
 import xdi2.core.syntax.XDIStatement;
 import xdi2.core.util.iterators.ReadOnlyIterator;
@@ -22,13 +23,19 @@ import xdi2.messaging.response.MessagingResponse;
  * This example shows how to discover a list of cloud names given a cloud number,
  * using the standard XDI messaging API.
  */
-public class ManualCloudNameDiscovery {
+public class CloudNameDiscovery {
 
-	public static void main(String[] args) throws Exception {
+	public static XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
 
-		CloudNumber cloudNumber = CloudNumber.create("=!:uuid:91f28153-f600-ae24-91f2-8153f600ae24");
+	public static void discoverAutomatic(CloudNumber cloudNumber) throws Exception {
 
-		XDIDiscoveryClient xdiDiscoveryClient = XDIDiscoveryClient.DEFAULT_DISCOVERY_CLIENT;
+		XDIDiscoveryResult result = xdiDiscoveryClient.discover(cloudNumber.getXDIAddress());
+
+		for (CloudName cloudName : result.getCloudNames()) System.out.println("Automatically discovered: " + cloudName);
+	}
+
+	public static void discoverManual(CloudNumber cloudNumber) throws Exception {
+
 		XDIDiscoveryResult resultFromRegistry = xdiDiscoveryClient.discoverFromRegistry(cloudNumber.getXDIAddress());
 
 		URI xdiEndpointUri = resultFromRegistry.getXdiEndpointUri();
@@ -46,6 +53,15 @@ public class ManualCloudNameDiscovery {
 		ContextNode contextNode = messagingResponse.getGraph().getDeepContextNode(cloudNumber.getXDIAddress());
 		ReadOnlyIterator<Relation> relations = contextNode.getRelations(XDIDictionaryConstants.XDI_ADD_IS_REF);
 
-		for (Relation relation : relations) System.out.println("Cloud Name: " + relation.follow().getXDIAddress());
+		for (Relation relation : relations) System.out.println("Manually discovered: " + relation.follow().getXDIAddress());
+	}
+
+	public static void main(String[] args) throws Exception {
+
+		CloudNumber cloudNumber = CloudNumber.create("=!:uuid:91f28153-f600-ae24-91f2-8153f600ae24");
+
+		discoverAutomatic(cloudNumber);
+
+		discoverManual(cloudNumber);
 	}
 }
