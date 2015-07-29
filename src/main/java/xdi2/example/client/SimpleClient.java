@@ -34,7 +34,7 @@ public class SimpleClient {
 		Message message = messageEnvelope.createMessage(XDIAddress.create("=sender"));
 		message.createGetOperation(XDIAddress.create("=markus<#email>"));
 		message.setToPeerRootXDIArc(xdiDiscoveryResult.getCloudNumber().getPeerRootXDIArc());
-		message.setLinkContract(PublicLinkContract.class);
+		message.setLinkContractClass(PublicLinkContract.class);
 
 		// construct client, send message, read result
 
