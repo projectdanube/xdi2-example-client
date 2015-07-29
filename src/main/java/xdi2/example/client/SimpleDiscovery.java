@@ -1,5 +1,7 @@
 package xdi2.example.client;
 
+import java.util.Arrays;
+
 import xdi2.core.syntax.XDIAddress;
 import xdi2.discovery.XDIDiscoveryClient;
 import xdi2.discovery.XDIDiscoveryResult;
@@ -17,6 +19,7 @@ public class SimpleDiscovery {
 
 		System.out.println("Result from registry:");
 		System.out.println("Cloud Number: " + resultFromRegistry.getCloudNumber());
+		System.out.println("Cloud Names: " + (resultFromRegistry.getCloudNames() == null ? null : Arrays.asList(resultFromRegistry.getCloudNames())));
 		System.out.println("URI: " + resultFromRegistry.getXdiEndpointUri());
 		System.out.println();
 
@@ -26,6 +29,7 @@ public class SimpleDiscovery {
 
 			System.out.println("Result from authority:");
 			System.out.println("Cloud Number: " + resultFromAuthority.getCloudNumber());
+			System.out.println("Cloud Names: " + (resultFromAuthority.getCloudNames() == null ? null : Arrays.asList(resultFromAuthority.getCloudNames())));
 			System.out.println("URI: " + resultFromAuthority.getXdiEndpointUri());
 		}
 	}
