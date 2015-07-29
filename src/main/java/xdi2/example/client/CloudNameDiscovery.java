@@ -44,7 +44,7 @@ public class CloudNameDiscovery {
 		Message message = messageEnvelope.createMessage(cloudNumber.getXDIAddress());
 		message.setToPeerRootXDIArc(cloudNumber.getPeerRootXDIArc());
 		message.createGetOperation(XDIStatement.fromComponents(cloudNumber.getXDIAddress(), XDIDictionaryConstants.XDI_ADD_IS_REF, XDIConstants.XDI_ADD_COMMON_VARIABLE));
-		message.setLinkContract(PublicLinkContract.class);
+		message.setLinkContractClass(PublicLinkContract.class);
 
 		XDIClient xdiClient = new XDIHttpClient(xdiEndpointUri);
 
